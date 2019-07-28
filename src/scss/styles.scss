@@ -1,0 +1,57 @@
+@import "navbar";
+@import "banner";
+@import "projects";
+@import "education";
+@import "skills";
+@import "terminal";
+
+@import "variables";
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+}
+
+mark {
+  padding: 0;
+  background-color: #607D8B;
+  color: #FFFFFF;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+section, h5 {
+  margin-bottom: 1rem;
+  line-height: 32px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+section a {
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+section a:hover {
+  text-decoration: underline;
+}
+
+.mw-700px {
+  max-width: 700px;
+}

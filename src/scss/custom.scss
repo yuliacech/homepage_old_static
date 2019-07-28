@@ -1,0 +1,11 @@
+@import "variables";
+
+$theme-colors: (
+        "primary": $default-primary-color,
+        "dark": $default-primary-color
+);
+
+$body-color: $default-text-color;
+$enable-rounded: false;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

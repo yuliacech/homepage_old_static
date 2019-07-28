@@ -1,0 +1,57 @@
+.terminal-wrapper {
+  display: block;
+  height: 400px;
+
+  .topbar {
+    height: 20px;
+    background-color: #DFDDDF;
+    border-radius: 6px 6px 0 0;
+    line-height: 20px;
+    padding-left: 6px;
+
+    .terminal-btn {
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      padding: 0;
+      margin-right: 4px;
+
+      &:active {
+        transform: translateY(1px);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &.green-btn {
+        background-color: #62C655;
+        border: 1px solid #55A841;
+      }
+
+      &.yellow-btn {
+        background-color: #F6C251;
+        border: 1px solid #D6A143;
+      }
+
+      &.red-btn {
+        background-color: #ED6A5E;
+        border: 1px solid #D05246;
+      }
+    }
+
+  }
+
+
+  .screen {
+    height: 100%;
+    background-color: #000000;
+    color: #28FE14;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 0 4px;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}

@@ -1,0 +1,17 @@
+
+.tech-logo {
+  max-width: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.tech-logo img {
+  width: 100%;
+}
+
+#experience li::before {
+  content: '>_';
+  font-weight: bold;
+  color: #607D8B;
+  margin-right: 10px;
+}

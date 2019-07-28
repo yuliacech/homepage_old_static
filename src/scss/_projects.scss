@@ -1,0 +1,27 @@
+.project-screenshot img {
+  padding: 5px;
+  border: solid 1px #CFD8DC;
+
+  -webkit-transition: all 200ms ease-in;
+  -ms-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+
+}
+
+.project-screenshot img:hover {
+  border: solid 1px #CCC;
+
+  -moz-box-shadow: 1px 1px 5px #999;
+  -webkit-box-shadow: 1px 1px 5px #999;
+  box-shadow: 1px 1px 5px #999;
+
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+}
+
+.width-150 {
+  width: 150px;
+}
