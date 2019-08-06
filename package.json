@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp serve",
-    "build": "gulp build"
+    "build": "gulp build",
+    "aws-deploy": "gulp aws-deploy"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,10 @@
     "browser-sync": "^2.26.7",
     "del": "^5.0.0",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2"
+    "gulp-awspublish": "^4.0.0",
+    "gulp-cloudfront-invalidate-aws-publish": "^1.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "merge2": "^1.2.4"
   }
 }

@@ -2,6 +2,11 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var del = require('del');
+var awspublish = require('gulp-awspublish');
+var rename = require("gulp-rename");
+var merge2 = require("merge2");
+var cloudfront = require("gulp-cloudfront-invalidate-aws-publish");
+var AWS = require("aws-sdk");
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function () {
@@ -57,6 +62,41 @@ gulp.task('serve', gulp.series(
         gulp.watch("src/*.html", gulp.series('copy'));
         gulp.watch("src/assets/*", gulp.series('assets'));
     }));
+
+gulp.task('aws-deploy', function () {
+    var aws = {
+        distribution: "E1WVACBK45GZ13",
+        credentials: new AWS.SharedIniFileCredentials(),
+        params: {
+            Bucket: "yuliacech.com"
+        },
+        region: "eu-central-1",
+        wait: true
+    };
+    var publisher = awspublish.create(aws);
+
+    var normalHeaders = {
+        "Cache-Control": "max-age=315360000, no-transform, public",
+    };
+    var htmlHeaders = {
+        ...normalHeaders,
+        'Content-Type': 'text/html; charset=utf-8'
+    };
+    var StreamAllExclHtml = gulp.src(["dist/**/*", "!dist/**/*.html"])
+        .pipe(publisher.publish(normalHeaders));
+
+    var StreamHtml = gulp.src(["dist/**/*.html"])
+        .pipe(rename(function (path) {
+                path.extname = "";
+            }
+        ))
+        .pipe(publisher.publish(htmlHeaders));
+    return merge2(StreamAllExclHtml, StreamHtml)
+        .pipe(publisher.sync())
+        .pipe(cloudfront(aws))
+        .pipe(awspublish.reporter());
+
+});
 
 // Static Server + watching scss/html files
 gulp.task('build', gulp.series('clean',
